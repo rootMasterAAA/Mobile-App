@@ -1,4 +1,8 @@
 <SignUpPage>
-    BoxLayout:
+    MDFloatLayout:
         MDLabel:
             text: "This is signup page"
+        MDIconButton:
+            icon: "arrow-left"
+            on_release: root.toLogin()
+            pos_hint: {"center_x": .09, "center_y": .95} 

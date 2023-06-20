@@ -17,6 +17,8 @@ Window.size = (310, 580)
     Signup Page: signup-page
     Device Control Page: devicecontrol-page
 '''
+dummy_user = "admin"
+dummy_password = "admin"
 class LoginPage(MDScreen):
     def __init__(self, **kw) -> None:
         super(LoginPage, self).__init__(**kw)
@@ -24,9 +26,11 @@ class LoginPage(MDScreen):
     def login(self) -> None:
         self.manager.transition.direction = 'left'
         self.manager.current = 'home_page'
-    def printHello(self):
-        print("Hello world")
-
+    def toSignup(self) -> None:
+        self.manager.transition.direction = "left"
+        self.manager.current = "signup-page"
+    def checkPassWord(self) -> None:
+        return
 class HomePage(MDScreen):
     def __init__(self, **kw) -> None:
         super(HomePage, self).__init__(**kw)
@@ -44,7 +48,9 @@ class SignUpPage(MDScreen):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.name = "signup-page"
-
+    def toLogin(self) -> None:
+        self.manager.transition.direction = "right"
+        self.manager.current = "login-page"
 class MobileApp(MDApp):
     title = "Smart Home Camera"
     def __init__(self, **kwargs):
@@ -70,8 +76,6 @@ class MobileApp(MDApp):
     def build(self):
         self.addMultipleWidgets()
         self.pipeLineConditionalCheck()
-        if checkUserLoginStatus():
-            self.sm.current = "home-page"
         self.sm.current = "login-page"
         return self.sm
     def addMultipleWidgets(self):

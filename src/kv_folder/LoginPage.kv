@@ -1,7 +1,46 @@
 <LoginPage>:
-    BoxLayout:
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
         MDLabel:
-            text: "This is login page"
+            text: "Empowering Home Safety: Smart Camera with Stroke Detection Capability."
+            pos_hint: {"center_x": .5, "center_y": .9}
+            halign: 'center'
+        Image:
+            source: "./assets/logo.png"
+            pos_hint: {"center_x": .5, "center_y": .61}
+        TextInput:
+            id: "user_name"
+            multiline: False
+            hint_text: "Enter username"
+            size_hint: None, None
+            size: 200, 30
+            pos_hint: {"center_x": .5, "center_y": .5}
+        TextInput:
+            id: "password"
+            multiline: False
+            hint_text: "Enter password"
+            size_hint: None, None
+            size: 200, 30
+            pos_hint: {"center_x": .5, "center_y": .43}
+        Button:
+            background_color: 0, 0, 0, 0
+            pos_hint: {"center_x": .5, "center_y": .32} 
+            text: "Login"
+            font_name: "Roboto-Bold"
+            size_hint: None, None
+            size: 100, 50
+            canvas.before:
+                Color:
+                    rgb: rgba(245,138,99,255)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10, 10, 10, 10]
         MDTextButton:
-            text: "Click me"
-            on_release: root.printHello()
+            text: "Don't have the account, create one!"
+            pos_hint: {"center_x": .5, "center_y": .24}
+            on_release: root.toSignup()
+        MDLabel:
+            text: "Beta version 1.0 (CPV-301)"
+            pos_hint: {"center_x": .5, "center_y": .02}
+            halign: 'center'

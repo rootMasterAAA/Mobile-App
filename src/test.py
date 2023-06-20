@@ -11,11 +11,9 @@ class LoginPage(MDScreen):
     def __init__(self, **kw) -> None:
         super(LoginPage, self).__init__(**kw)
         self.name="login-page"
-    def login(self) -> None:
-        self.manager.transition.direction = 'left'
-        self.manager.current = 'home_page'
-    def printHello(self):
-        print("Hello world")
+    def toSignup(self) -> None:
+        self.manager.transition.direction = "left"
+        self.manager.current = "signup-page"
 
 class HomePage(MDScreen):
     def __init__(self, **kw) -> None:
@@ -34,7 +32,9 @@ class SignUpPage(MDScreen):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.name = "signup-page"
-
+    def toLogin(self):
+        self.manager.transition.direction = "right"
+        self.manager.current = "login-page"
 class MobileApp(MDApp):
     title = "Smart Home Camera"
     def __init__(self, **kwargs):
